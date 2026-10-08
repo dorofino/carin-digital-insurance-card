@@ -208,6 +208,25 @@ Usage: #example
 * plan[0].specificCost[6].benefit[0].extension[limitation].extension[limitValue].valueQuantity.unit = "visits"
 * plan[0].specificCost[6].benefit[0].extension[limitation].extension[limitPeriod].valueCodeableConcept = LimitPeriodCS#plan-year "Plan Year"
 
+// Specific Cost - Hearing Aids
+* plan[0].specificCost[7].category = SBCBenefitCategoryCS#hearing-aids
+* plan[0].specificCost[7].benefit[0].type = SBCBenefitCategoryCS#hearing-aids
+
+* plan[0].specificCost[7].benefit[0].cost[0].type.text = "Copayment"
+* plan[0].specificCost[7].benefit[0].cost[0].applicability = http://terminology.hl7.org/CodeSystem/applicability#in-network "In Network"
+* plan[0].specificCost[7].benefit[0].cost[0].value.value = 0
+* plan[0].specificCost[7].benefit[0].cost[0].value.unit = "USD"
+
+* plan[0].specificCost[7].benefit[0].cost[1].type.text = "Not covered"
+* plan[0].specificCost[7].benefit[0].cost[1].applicability = http://terminology.hl7.org/CodeSystem/applicability#out-of-network "Out of Network"
+* plan[0].specificCost[7].benefit[0].cost[1].value.value = 0
+* plan[0].specificCost[7].benefit[0].cost[1].value.unit = "USD"
+* plan[0].specificCost[7].benefit[0].extension[limitation][0].extension[limitText].valueString = "$1,000 maximum per ear"
+* plan[0].specificCost[7].benefit[0].extension[limitation][0].extension[limitType].valueCodeableConcept = LimitTypeCS#dollars "Dollars"
+* plan[0].specificCost[7].benefit[0].extension[limitation][0].extension[limitValue].valueQuantity.value = 1000
+* plan[0].specificCost[7].benefit[0].extension[limitation][0].extension[limitValue].valueQuantity.unit = "USD"
+* plan[0].specificCost[7].benefit[0].extension[limitation][1].extension[limitText].valueString = "Limited to 2 hearing aids a year"
+
 
 // Supporting Organization
 Instance: ExampleIssuerOrg

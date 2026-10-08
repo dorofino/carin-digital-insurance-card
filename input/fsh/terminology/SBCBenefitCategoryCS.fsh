@@ -37,3 +37,5 @@ Description: "Code system for the 27 benefit categories required in Summary of B
 * #children-eye-exam "Children's Eye Exam" "Eye examinations for children"
 * #children-glasses "Children's Glasses" "Eyeglasses for children"
 * #children-dental "Children's Dental Check-up" "Routine dental care for children"
+* #hearing-aids "Hearing Aids" "Hearing aids, including their fitting"
+* #hearing-exam "Routine Hearing Exam" "Routine hearing examinations"
