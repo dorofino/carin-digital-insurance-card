@@ -91,35 +91,38 @@ Usage: #example
 * plan[0].specificCost[0].category = SBCBenefitCategoryCS#preventive-care
 * plan[0].specificCost[0].benefit[0].type = SBCBenefitCategoryCS#preventive-care
 
+* plan[0].specificCost[0].benefit[0].cost[0].type = SBCCostTypeCS#copay "Copay"
 * plan[0].specificCost[0].benefit[0].cost[0].type.text = "No charge"
 * plan[0].specificCost[0].benefit[0].cost[0].applicability = http://terminology.hl7.org/CodeSystem/applicability#in-network "In Network"
 * plan[0].specificCost[0].benefit[0].cost[0].value.value = 0
 * plan[0].specificCost[0].benefit[0].cost[0].value.unit = "USD"
 
+* plan[0].specificCost[0].benefit[0].cost[1].type = SBCCostTypeCS#not-covered "Not Covered"
 * plan[0].specificCost[0].benefit[0].cost[1].type.text = "Not covered"
 * plan[0].specificCost[0].benefit[0].cost[1].applicability = http://terminology.hl7.org/CodeSystem/applicability#out-of-network "Out of Network"
-* plan[0].specificCost[0].benefit[0].cost[1].value.value = 0
-* plan[0].specificCost[0].benefit[0].cost[1].value.unit = "USD"
+* plan[0].specificCost[0].benefit[0].cost[1].value.extension[data-absent-reason].valueCode = #not-applicable
 
 // Specific Cost - Primary Care Visit
 * plan[0].specificCost[1].category = SBCBenefitCategoryCS#primary-care-visit
 * plan[0].specificCost[1].benefit[0].type = SBCBenefitCategoryCS#primary-care-visit
 
+* plan[0].specificCost[1].benefit[0].cost[0].type = SBCCostTypeCS#copay "Copay"
 * plan[0].specificCost[1].benefit[0].cost[0].type.text = "Copayment"
 * plan[0].specificCost[1].benefit[0].cost[0].applicability = http://terminology.hl7.org/CodeSystem/applicability#in-network "In Network"
 * plan[0].specificCost[1].benefit[0].cost[0].extension[deductibleApplies].valueBoolean = false
 * plan[0].specificCost[1].benefit[0].cost[0].value.value = 25
 * plan[0].specificCost[1].benefit[0].cost[0].value.unit = "USD"
 
+* plan[0].specificCost[1].benefit[0].cost[1].type = SBCCostTypeCS#not-covered "Not Covered"
 * plan[0].specificCost[1].benefit[0].cost[1].type.text = "Not covered"
 * plan[0].specificCost[1].benefit[0].cost[1].applicability = http://terminology.hl7.org/CodeSystem/applicability#out-of-network "Out of Network"
-* plan[0].specificCost[1].benefit[0].cost[1].value.value = 0
-* plan[0].specificCost[1].benefit[0].cost[1].value.unit = "USD"
+* plan[0].specificCost[1].benefit[0].cost[1].value.extension[data-absent-reason].valueCode = #not-applicable
 
 // Specific Cost - Specialist Visit (multi-tier cost sharing by provider designation and modality)
 * plan[0].specificCost[2].category = SBCBenefitCategoryCS#specialist-visit
 * plan[0].specificCost[2].benefit[0].type = SBCBenefitCategoryCS#specialist-visit
 
+* plan[0].specificCost[2].benefit[0].cost[0].type = SBCCostTypeCS#copay "Copay"
 * plan[0].specificCost[2].benefit[0].cost[0].type.text = "Copayment"
 * plan[0].specificCost[2].benefit[0].cost[0].applicability = http://terminology.hl7.org/CodeSystem/applicability#in-network "In Network"
 * plan[0].specificCost[2].benefit[0].cost[0].qualifiers[0] = CostTierCS#value-choice "Value Choice Provider"
@@ -127,32 +130,36 @@ Usage: #example
 * plan[0].specificCost[2].benefit[0].cost[0].value.value = 0
 * plan[0].specificCost[2].benefit[0].cost[0].value.unit = "USD"
 
+* plan[0].specificCost[2].benefit[0].cost[1].type = SBCCostTypeCS#copay "Copay"
 * plan[0].specificCost[2].benefit[0].cost[1].type.text = "Copayment"
 * plan[0].specificCost[2].benefit[0].cost[1].applicability = http://terminology.hl7.org/CodeSystem/applicability#in-network "In Network"
 * plan[0].specificCost[2].benefit[0].cost[1].qualifiers[0] = CostTierCS#standard "Standard Provider"
 * plan[0].specificCost[2].benefit[0].cost[1].value.value = 50
 * plan[0].specificCost[2].benefit[0].cost[1].value.unit = "USD"
 
+* plan[0].specificCost[2].benefit[0].cost[2].type = SBCCostTypeCS#copay "Copay"
 * plan[0].specificCost[2].benefit[0].cost[2].type.text = "Copayment"
 * plan[0].specificCost[2].benefit[0].cost[2].applicability = http://terminology.hl7.org/CodeSystem/applicability#in-network "In Network"
 * plan[0].specificCost[2].benefit[0].cost[2].qualifiers[0] = CostTierCS#virtual "Virtual Visit"
 * plan[0].specificCost[2].benefit[0].cost[2].value.value = 10
 * plan[0].specificCost[2].benefit[0].cost[2].value.unit = "USD"
 
+* plan[0].specificCost[2].benefit[0].cost[3].type = SBCCostTypeCS#not-covered "Not Covered"
 * plan[0].specificCost[2].benefit[0].cost[3].type.text = "Not covered"
 * plan[0].specificCost[2].benefit[0].cost[3].applicability = http://terminology.hl7.org/CodeSystem/applicability#out-of-network "Out of Network"
-* plan[0].specificCost[2].benefit[0].cost[3].value.value = 0
-* plan[0].specificCost[2].benefit[0].cost[3].value.unit = "USD"
+* plan[0].specificCost[2].benefit[0].cost[3].value.extension[data-absent-reason].valueCode = #not-applicable
 
 // Specific Cost - Emergency Room Care
 * plan[0].specificCost[3].category = SBCBenefitCategoryCS#emergency-room-care
 * plan[0].specificCost[3].benefit[0].type = SBCBenefitCategoryCS#emergency-room-care
 
+* plan[0].specificCost[3].benefit[0].cost[0].type = SBCCostTypeCS#copay "Copay"
 * plan[0].specificCost[3].benefit[0].cost[0].type.text = "Copayment"
 * plan[0].specificCost[3].benefit[0].cost[0].applicability = http://terminology.hl7.org/CodeSystem/applicability#in-network "In Network"
 * plan[0].specificCost[3].benefit[0].cost[0].value.value = 350
 * plan[0].specificCost[3].benefit[0].cost[0].value.unit = "USD"
 
+* plan[0].specificCost[3].benefit[0].cost[1].type = SBCCostTypeCS#copay "Copay"
 * plan[0].specificCost[3].benefit[0].cost[1].type.text = "Copayment"
 * plan[0].specificCost[3].benefit[0].cost[1].applicability = http://terminology.hl7.org/CodeSystem/applicability#out-of-network "Out of Network"
 * plan[0].specificCost[3].benefit[0].cost[1].value.value = 350
@@ -163,45 +170,48 @@ Usage: #example
 * plan[0].specificCost[4].category = SBCBenefitCategoryCS#generic-drugs
 * plan[0].specificCost[4].benefit[0].type = SBCBenefitCategoryCS#generic-drugs
 
+* plan[0].specificCost[4].benefit[0].cost[0].type = SBCCostTypeCS#copay "Copay"
 * plan[0].specificCost[4].benefit[0].cost[0].type.text = "Copayment"
 * plan[0].specificCost[4].benefit[0].cost[0].applicability = http://terminology.hl7.org/CodeSystem/applicability#in-network "In Network"
 * plan[0].specificCost[4].benefit[0].cost[0].value.value = 10
 * plan[0].specificCost[4].benefit[0].cost[0].value.unit = "USD"
 
+* plan[0].specificCost[4].benefit[0].cost[1].type = SBCCostTypeCS#not-covered "Not Covered"
 * plan[0].specificCost[4].benefit[0].cost[1].type.text = "Not covered"
 * plan[0].specificCost[4].benefit[0].cost[1].applicability = http://terminology.hl7.org/CodeSystem/applicability#out-of-network "Out of Network"
-* plan[0].specificCost[4].benefit[0].cost[1].value.value = 0
-* plan[0].specificCost[4].benefit[0].cost[1].value.unit = "USD"
+* plan[0].specificCost[4].benefit[0].cost[1].value.extension[data-absent-reason].valueCode = #not-applicable
 
 // Specific Cost - Hospital Inpatient Care
 * plan[0].specificCost[5].category = SBCBenefitCategoryCS#hospital-inpatient
 * plan[0].specificCost[5].benefit[0].type = SBCBenefitCategoryCS#hospital-inpatient
 
+* plan[0].specificCost[5].benefit[0].cost[0].type = SBCCostTypeCS#coinsurance "Coinsurance"
 * plan[0].specificCost[5].benefit[0].cost[0].type.text = "Coinsurance"
 * plan[0].specificCost[5].benefit[0].cost[0].applicability = http://terminology.hl7.org/CodeSystem/applicability#in-network "In Network"
 * plan[0].specificCost[5].benefit[0].cost[0].extension[deductibleApplies].valueBoolean = true
 * plan[0].specificCost[5].benefit[0].cost[0].value.value = 20
 * plan[0].specificCost[5].benefit[0].cost[0].value.unit = "%"
 
+* plan[0].specificCost[5].benefit[0].cost[1].type = SBCCostTypeCS#not-covered "Not Covered"
 * plan[0].specificCost[5].benefit[0].cost[1].type.text = "Not covered"
 * plan[0].specificCost[5].benefit[0].cost[1].applicability = http://terminology.hl7.org/CodeSystem/applicability#out-of-network "Out of Network"
-* plan[0].specificCost[5].benefit[0].cost[1].value.value = 0
-* plan[0].specificCost[5].benefit[0].cost[1].value.unit = "%"
+* plan[0].specificCost[5].benefit[0].cost[1].value.extension[data-absent-reason].valueCode = #not-applicable
 * plan[0].specificCost[5].benefit[0].extension[limitation].extension[limitText].valueString = "Prior authorization required"
 
 // Specific Cost - Home Health Care
 * plan[0].specificCost[6].category = SBCBenefitCategoryCS#home-health-care
 * plan[0].specificCost[6].benefit[0].type = SBCBenefitCategoryCS#home-health-care
 
+* plan[0].specificCost[6].benefit[0].cost[0].type = SBCCostTypeCS#copay "Copay"
 * plan[0].specificCost[6].benefit[0].cost[0].type.text = "Copayment"
 * plan[0].specificCost[6].benefit[0].cost[0].applicability = http://terminology.hl7.org/CodeSystem/applicability#in-network "In Network"
 * plan[0].specificCost[6].benefit[0].cost[0].value.value = 30
 * plan[0].specificCost[6].benefit[0].cost[0].value.unit = "USD"
 
+* plan[0].specificCost[6].benefit[0].cost[1].type = SBCCostTypeCS#not-covered "Not Covered"
 * plan[0].specificCost[6].benefit[0].cost[1].type.text = "Not covered"
 * plan[0].specificCost[6].benefit[0].cost[1].applicability = http://terminology.hl7.org/CodeSystem/applicability#out-of-network "Out of Network"
-* plan[0].specificCost[6].benefit[0].cost[1].value.value = 0
-* plan[0].specificCost[6].benefit[0].cost[1].value.unit = "USD"
+* plan[0].specificCost[6].benefit[0].cost[1].value.extension[data-absent-reason].valueCode = #not-applicable
 * plan[0].specificCost[6].benefit[0].extension[limitation].extension[limitText].valueString = "Limited to 60 visits per plan year"
 * plan[0].specificCost[6].benefit[0].extension[limitation].extension[limitType].valueCodeableConcept = LimitTypeCS#visits "Visits"
 * plan[0].specificCost[6].benefit[0].extension[limitation].extension[limitValue].valueQuantity.value = 60
@@ -212,15 +222,16 @@ Usage: #example
 * plan[0].specificCost[7].category = SBCBenefitCategoryCS#hearing-aids
 * plan[0].specificCost[7].benefit[0].type = SBCBenefitCategoryCS#hearing-aids
 
+* plan[0].specificCost[7].benefit[0].cost[0].type = SBCCostTypeCS#copay "Copay"
 * plan[0].specificCost[7].benefit[0].cost[0].type.text = "Copayment"
 * plan[0].specificCost[7].benefit[0].cost[0].applicability = http://terminology.hl7.org/CodeSystem/applicability#in-network "In Network"
 * plan[0].specificCost[7].benefit[0].cost[0].value.value = 0
 * plan[0].specificCost[7].benefit[0].cost[0].value.unit = "USD"
 
+* plan[0].specificCost[7].benefit[0].cost[1].type = SBCCostTypeCS#not-covered "Not Covered"
 * plan[0].specificCost[7].benefit[0].cost[1].type.text = "Not covered"
 * plan[0].specificCost[7].benefit[0].cost[1].applicability = http://terminology.hl7.org/CodeSystem/applicability#out-of-network "Out of Network"
-* plan[0].specificCost[7].benefit[0].cost[1].value.value = 0
-* plan[0].specificCost[7].benefit[0].cost[1].value.unit = "USD"
+* plan[0].specificCost[7].benefit[0].cost[1].value.extension[data-absent-reason].valueCode = #not-applicable
 * plan[0].specificCost[7].benefit[0].extension[limitation][0].extension[limitText].valueString = "$1,000 maximum per ear"
 * plan[0].specificCost[7].benefit[0].extension[limitation][0].extension[limitType].valueCodeableConcept = LimitTypeCS#dollars "Dollars"
 * plan[0].specificCost[7].benefit[0].extension[limitation][0].extension[limitValue].valueQuantity.value = 1000

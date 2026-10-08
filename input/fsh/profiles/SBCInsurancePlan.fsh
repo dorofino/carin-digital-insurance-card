@@ -130,13 +130,14 @@ Description: "Profile of InsurancePlan resource for representing Summary of Bene
 * plan.specificCost.benefit.extension contains BenefitLimitation named limitation 0..* MS
 * plan.specificCost.benefit.extension[limitation] ^short = "Benefit-specific limitations"
 
-* plan.specificCost.benefit.cost 2..* MS
+* plan.specificCost.benefit.cost 1..* MS
 * plan.specificCost.benefit.cost ^short = "Cost-sharing amounts"
 * plan.specificCost.benefit.cost ^definition = "Cost-sharing information including copays, coinsurance, and deductibles. Must include separate entries for in-network and out-of-network services where applicable"
 
 * plan.specificCost.benefit.cost.type 1..1 MS
-* plan.specificCost.benefit.cost.type ^short = "Type of cost (copay, coinsurance, deductible)"
-* plan.specificCost.benefit.cost.type ^definition = "The type of cost-sharing: copayment (fixed dollar amount), coinsurance (percentage), or deductible"
+* plan.specificCost.benefit.cost.type from SBCCostTypeVS (extensible)
+* plan.specificCost.benefit.cost.type ^short = "Type of cost (copay, coinsurance, deductible, not covered)"
+* plan.specificCost.benefit.cost.type ^definition = "The type of cost-sharing: copayment (fixed dollar amount), coinsurance (percentage), or deductible, or not-covered when the plan does not cover the benefit for this applicability"
 
 * plan.specificCost.benefit.cost.applicability 1..1 MS
 * plan.specificCost.benefit.cost.applicability ^short = "Network applicability (in-network, out-of-network)"
@@ -157,4 +158,4 @@ Description: "Profile of InsurancePlan resource for representing Summary of Bene
 
 * plan.specificCost.benefit.cost.value 1..1 MS
 * plan.specificCost.benefit.cost.value ^short = "Cost amount"
-* plan.specificCost.benefit.cost.value ^definition = "The actual cost-sharing amount (dollar amount for copay, percentage for coinsurance)"
+* plan.specificCost.benefit.cost.value ^definition = "The actual cost-sharing amount (dollar amount for copay, percentage for coinsurance). When type is not-covered, value carries no amount: it holds a data-absent-reason extension with code not-applicable, not 0"
