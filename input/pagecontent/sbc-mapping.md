@@ -40,7 +40,7 @@ Maps to `InsurancePlan.coverage.benefit`:
 Maps to `InsurancePlan.plan.specificCost`:
 - Each benefit category has associated costs
 - Separate cost entries for in-network and out-of-network
-- Cost types: copayment, coinsurance, deductible
+- Cost types: copayment, coinsurance, deductible, not covered
 
 ### Example Mapping: Primary Care Visit
 
@@ -66,9 +66,10 @@ plan.specificCost[x]
       .applicability.text = "in-network"
       .value = 25 USD
     .cost[1]
+      .type = #not-covered
       .type.text = "Not covered"
       .applicability.text = "out-of-network"
-      .value = 0 USD
+      .value.extension[data-absent-reason].valueCode = #not-applicable
 ```
 
 ## Excluded Services & Other Covered Services
@@ -130,7 +131,7 @@ The SBC requires three standardized coverage examples:
 ## Important Design Principles
 
 1. **Maximize use of base InsurancePlan elements** - Extensions only where truly necessary
-2. **Network distinctions are critical** - Always include both in-network and out-of-network costs via `.applicability`
+2. **Network distinctions are critical** - Include both in-network and out-of-network costs via `.applicability`, where applicable
 3. **All 27 benefit categories should be represented** - Even if "Not covered" or "$0"
 4. **Consumer-readable text is important** - Use `.requirement`, `.comment`, and extension strings for explanations
 5. **Regulatory compliance** - Map all mandatory SBC elements to maintain compliance
@@ -151,7 +152,7 @@ These elements provide important consumer information but are standardized boile
 
 Implementations should validate:
 - All 27 benefit categories are present in `plan.specificCost`
-- Each benefit has at least 2 cost entries (in-network and out-of-network)
+- Each benefit has at least 1 cost entry (in-network and out-of-network where applicable)
 - Required metadata elements are populated (name, period, ownedBy)
 - Contact information includes at minimum a phone number and website
 - Cost values use appropriate units (USD for copays, % for coinsurance)

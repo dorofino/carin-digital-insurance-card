@@ -33,7 +33,7 @@ This page provides an overview of the profiles defined in this implementation gu
    - `plan.specificCost.benefit.type` - Required binding to SBC Benefit Category ValueSet
 
 4. **Cardinality Requirements:**
-   - `plan.specificCost.benefit.cost` - Minimum of 2 (to capture both in-network and out-of-network)
+   - `plan.specificCost.benefit.cost` - Minimum of 1 (separate in-network and out-of-network entries where applicable)
    - Each cost entry must specify `.applicability` (in-network vs out-of-network)
 
 ### Usage Notes
@@ -75,13 +75,14 @@ plan.specificCost[x]
 
 #### Representing "Not Covered" Benefits
 
-For benefits not covered by the plan, still create entries with $0 or appropriate indicator:
+For benefits not covered by the plan, still create entries, coded `not-covered`, with no amount in the value (a data-absent-reason extension instead of $0):
 
 ```
 plan.specificCost.benefit.cost
+  .type = #not-covered
   .type.text = "Not covered"
   .applicability.text = "out-of-network"
-  .value.value = 0
+  .value.extension[data-absent-reason].valueCode = #not-applicable
 ```
 
 #### Representing Coinsurance
@@ -147,7 +148,7 @@ coverage.benefit.extension[limitation].valueString = "Prior authorization requir
 Implementations should ensure:
 
 1. All 27 SBC benefit categories are represented in `plan.specificCost`
-2. Each benefit has costs for both in-network and out-of-network (even if "not covered")
+2. Each benefit has costs for both in-network and out-of-network where applicable (even if "not covered")
 3. Contact information includes at minimum phone and web URL
 4. Cost values use consistent currency (USD recommended)
 5. Percentage-based coinsurance uses "%" unit

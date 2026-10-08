@@ -111,9 +111,20 @@ Preventive care is typically covered at no cost for in-network services under AC
         "value": { "value": 0, "unit": "USD" }
       },
       {
-        "type": { "text": "Not covered" },
+        "type": {
+          "coding": [{
+            "system": "http://hl7.org/fhir/us/insurance-card/CodeSystem/sbc-cost-type",
+            "code": "not-covered"
+          }],
+          "text": "Not covered"
+        },
         "applicability": { "text": "out-of-network" },
-        "value": { "value": 0, "unit": "USD" }
+        "value": {
+          "extension": [{
+            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+            "valueCode": "not-applicable"
+          }]
+        }
       }
     ]
   }]
@@ -155,9 +166,20 @@ HMO plans typically don't cover out-of-network except emergencies:
 ```json
 {
   "cost": [{
-    "type": { "text": "Not covered" },
+    "type": {
+      "coding": [{
+        "system": "http://hl7.org/fhir/us/insurance-card/CodeSystem/sbc-cost-type",
+        "code": "not-covered"
+      }],
+      "text": "Not covered"
+    },
     "applicability": { "text": "out-of-network" },
-    "value": { "value": 0, "unit": "USD" }
+    "value": {
+      "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode": "not-applicable"
+      }]
+    }
   }]
 }
 ```
@@ -404,7 +426,7 @@ Drug coverage typically has tiered cost-sharing:
 A production-ready SBC representation should include:
 
 1. **All 27 benefit categories** in `plan.specificCost`
-2. **Both network applicabilities** (in-network and out-of-network) for each benefit
+2. **Both network applicabilities** (in-network and out-of-network) for each benefit, where applicable
 3. **General costs** (deductibles, OOP maximums) in `plan.generalCost`
 4. **Contact information** for questions, provider lists, formulary, glossary
 5. **Regulatory metadata** (minimum essential coverage, minimum value)
@@ -412,7 +434,7 @@ A production-ready SBC representation should include:
 7. **Requirements and limitations** for each benefit as applicable
 8. **Plan identification** (name, type, period, HIOS ID)
 
-The example provided demonstrates the structure with 6 benefit categories. A complete implementation would expand this to all 27 categories with appropriate cost-sharing for each.
+The example provided demonstrates the structure with 8 benefit categories. A complete implementation would expand this to all 27 categories with appropriate cost-sharing for each.
 
 ## Testing and Validation
 
@@ -423,7 +445,7 @@ When creating SBC InsurancePlan instances, validate:
 3. ✓ At least one contact with phone and URL
 4. ✓ Plan type is from SBC Plan Type ValueSet
 5. ✓ All 27 benefit categories present in specificCost
-6. ✓ Each benefit has at least 2 cost entries (in/out of network)
+6. ✓ Each benefit has at least 1 cost entry (in/out of network where applicable)
 7. ✓ Cost applicability is specified for each cost
 8. ✓ Currency is consistent (e.g., all USD)
 9. ✓ Percentage values use "%" unit

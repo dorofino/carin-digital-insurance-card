@@ -127,11 +127,11 @@ For network applicability (`InsurancePlan.plan.specificCost.benefit.cost.applica
 
 ### Cost Type Codes
 
-While this IG doesn't define a specific code system for cost types, implementations should use clear text values:
-- "Copayment" - Fixed dollar amount per service
-- "Coinsurance" - Percentage of cost
-- "Deductible" - Amount to be met before coverage
-- "Not covered" - Service is not covered under the plan
+`InsurancePlan.plan.specificCost.benefit.cost.type` has an extensible binding to the SBC Cost Type value set (http://hl7.org/fhir/us/insurance-card/ValueSet/sbc-cost-type), which includes the codes of the SBC Cost Type code system (http://hl7.org/fhir/us/insurance-card/CodeSystem/sbc-cost-type):
+- `copay` - Fixed dollar amount per service
+- `coinsurance` - Percentage of cost
+- `deductible` - Amount to be met before coverage
+- `not-covered` - Service is not covered under the plan; the cost value carries no amount, only a data-absent-reason extension with code `not-applicable`
 
 ## Extension Code Systems
 
