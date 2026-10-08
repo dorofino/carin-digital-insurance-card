@@ -189,6 +189,25 @@ Usage: #example
 * plan[0].specificCost[5].benefit[0].cost[1].value.unit = "%"
 * plan[0].specificCost[5].benefit[0].extension[limitation].extension[limitText].valueString = "Prior authorization required"
 
+// Specific Cost - Home Health Care
+* plan[0].specificCost[6].category = SBCBenefitCategoryCS#home-health-care
+* plan[0].specificCost[6].benefit[0].type = SBCBenefitCategoryCS#home-health-care
+
+* plan[0].specificCost[6].benefit[0].cost[0].type.text = "Copayment"
+* plan[0].specificCost[6].benefit[0].cost[0].applicability = http://terminology.hl7.org/CodeSystem/applicability#in-network "In Network"
+* plan[0].specificCost[6].benefit[0].cost[0].value.value = 30
+* plan[0].specificCost[6].benefit[0].cost[0].value.unit = "USD"
+
+* plan[0].specificCost[6].benefit[0].cost[1].type.text = "Not covered"
+* plan[0].specificCost[6].benefit[0].cost[1].applicability = http://terminology.hl7.org/CodeSystem/applicability#out-of-network "Out of Network"
+* plan[0].specificCost[6].benefit[0].cost[1].value.value = 0
+* plan[0].specificCost[6].benefit[0].cost[1].value.unit = "USD"
+* plan[0].specificCost[6].benefit[0].extension[limitation].extension[limitText].valueString = "Limited to 60 visits per plan year"
+* plan[0].specificCost[6].benefit[0].extension[limitation].extension[limitType].valueCodeableConcept = LimitTypeCS#visits "Visits"
+* plan[0].specificCost[6].benefit[0].extension[limitation].extension[limitValue].valueQuantity.value = 60
+* plan[0].specificCost[6].benefit[0].extension[limitation].extension[limitValue].valueQuantity.unit = "visits"
+* plan[0].specificCost[6].benefit[0].extension[limitation].extension[limitPeriod].valueCodeableConcept = LimitPeriodCS#plan-year "Plan Year"
+
 
 // Supporting Organization
 Instance: ExampleIssuerOrg

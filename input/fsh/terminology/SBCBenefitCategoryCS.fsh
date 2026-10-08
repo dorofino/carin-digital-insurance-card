@@ -28,6 +28,7 @@ Description: "Code system for the 27 benefit categories required in Summary of B
 * #pregnancy "Pregnancy Services" "Prenatal and postnatal office visits"
 * #pregnancy-delivery "Childbirth/Delivery Professional Services" "Professional services for childbirth and delivery"
 * #pregnancy-home-health "Pregnancy Home Health Care" "Home health care services related to pregnancy"
+* #home-health-care "Home Health Care" "Home health care services provided in the member's home"
 * #rehabilitation "Rehabilitation Services" "Outpatient physical, occupational, and speech therapy"
 * #habilitation "Habilitation Services" "Health care services that help develop or maintain daily living skills"
 * #skilled-nursing "Skilled Nursing Care" "Skilled nursing facility services"
